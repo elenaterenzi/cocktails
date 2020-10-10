@@ -26,7 +26,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
-                        @if (User.IsInRole(Constants.AdminRole) || User.IsInRole(Constants.UserRole))
+                        @if (User.IsInRole(Constants.AdminRole) 
+                          || User.IsInRole(Constants.UserRole)
+                          || User.IsInRole(Constants.AlchoolFree))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
@@ -35,7 +37,7 @@
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Cocktails">Cocktails</a>
                             </li>
                         }
-                        @if (User.IsInRole(Constants.AdminRole)) // SignInManager.IsSignedIn(User) && 
+                        @if (User.IsInRole(Constants.AdminRole))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="Admin" asp-page="/UserRoleManager">Gestione Utenti</a>

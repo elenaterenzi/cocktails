@@ -30,5 +30,6 @@ namespace cocktails.Authorization
 
         public static readonly string AdminRole = "bartenders";
         public static readonly string UserRole = "alcolizzati";
+        public static readonly string AlchoolFree = "minorenne";
     }    
 }

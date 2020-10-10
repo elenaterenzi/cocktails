@@ -7,7 +7,7 @@ using cocktails.Models;
 
 namespace cocktails.Pages
 {
-    [Authorize(Roles = "bartenders, alcolizzati")]
+    [Authorize(Roles = "bartenders, alcolizzati, minorenne")]
     public class CocktailsModel : PageModel
     {
         private readonly ILogger<CocktailsModel> _logger;
