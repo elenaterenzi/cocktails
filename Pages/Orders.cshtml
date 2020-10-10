@@ -13,24 +13,24 @@
     <table class="table table-striped table-bordered w-auto">
         <thead>
             <th style="text-align:left"> Cocktail </th>
-            <th style="text-align:left"> Ordinato </th>
-            <th style="text-align:left"> Finito </th>
-            <th style="text-align:left"> Stato </th>
             <th style="text-align:left"> Alcolizzato </th>
+            <th style="text-align:left"> Ordinato </th>
             <th style="text-align:left"> Completa </th>
         </thead>
         @foreach (var o in olist)
         {
             <tr>
                 <td style="text-align:left"> @o.Cocktail </td>
-                <td style="text-align:left"> @o.Dto </td>
-                <td style="text-align:left"> @o.Dto_Completato </td>
-                <td style="text-align:left"> @o.Stato </td>
                 <td style="text-align:left"> @o.UserName </td>
-                <td>
+                <td style="text-align:left"> @o.Dto </td>
+                <td style="text-align:left">
                     @if (o.Stato == "New")
                     {
                         <a class="btn btn-primary" asp-page="" asp-route-id="@o.Id">Fatto!</a>
+                    }
+                    else
+                    {
+                        @o.Dto_Completato
                     }
                 </td>
            </tr>
