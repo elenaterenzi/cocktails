@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace cocktails.Pages
 {
-    [AllowAnonymous]
+    [Authorize(Roles = "bartenders, alcolizzati")]
     public class PrivacyModel : PageModel
     {
         private readonly ILogger<PrivacyModel> _logger;
