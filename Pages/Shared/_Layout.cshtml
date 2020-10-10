@@ -26,15 +26,15 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Cocktails">Cocktails</a>
-                        </li>
-                        <!--<li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Orders">Ordinazioni</a>
-                        </li>-->
+                        @if (User.IsInRole(Constants.AdminRole) || User.IsInRole(Constants.UserRole))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Cocktails">Cocktails</a>
+                            </li>
+                        }
                         @if (User.IsInRole(Constants.AdminRole)) // SignInManager.IsSignedIn(User) && 
                         {
                             <li class="nav-item">
