@@ -1,0 +1,64 @@
+@page
+@model UserRoleManagerModel
+
+@{
+    ViewData["Title"] = "Gestione Ruoli";
+}
+
+<div class="text-left">
+    <h1 class="display-4">Gestione Ruoli e Utenti</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>a un certo punto qui comparira' una lista dei ruoli</p>
+
+    <h2>Crea nuovo ruolo</h2>
+    <form method="post">
+        <p>
+            <label asp-for="formRoleName">Nome del ruolo:</label>
+            <input type="text" asp-for="formRoleName" />
+            <input type="submit" value="Aggiungi" />
+        </p>
+    <h2>Lista Ruoli</h2>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <td style="text-align:left"> Id </td>
+                <td style="text-align:left"> Name </td>
+            </thead>
+            @foreach (var r in Model.roleList)
+            {
+                <tr>
+                    <td style="text-align:left"> @r.Key</td>
+                    <td style="text-align:left"> @r.Value </td>
+                    <td i-role="@r.Key"></td>
+                    <td>
+                        <button type="submit" asp-page-handler="deleteRole"
+                                asp-route-id="@r.Key">Elimina
+                        </button>
+                    </td>
+                </tr>            
+            }
+        </table>
+    <h2>Lista Utenti</h2>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <td style="text-align:left"> Id </td>
+                <td style="text-align:left"> Email </td>
+            </thead>
+        @foreach (var u in Model.userSelectList)
+        {
+                <tr>
+                    <td style="text-align:left"> @u.Value</td>
+                    <td style="text-align:left"> @u.Text </td>
+                    <td>
+                        <button type="submit" asp-page-handler="deleteUser"
+                                asp-route-id="@u.Value">Elimina
+                        </button>
+                    </td>
+                </tr>            
+        }
+        </table>
+
+        <select name="selectedRole" asp-items="Model.roleSelectList"> </select> 
+        <select name="selectedUser" asp-items="Model.userSelectList"> </select> 
+        <button type="submit" asp-page-handler="addUserToRole">Aggiungi</button>
+    </form>
+</div>

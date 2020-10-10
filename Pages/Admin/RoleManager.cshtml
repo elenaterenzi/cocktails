@@ -1,0 +1,34 @@
+@page "/roleadmin"
+@model IEnumerable<IdentityRole>
+
+@{
+    ViewData["Title"] = "Gestione Ruoli";
+}
+
+<div class="text-left">
+    <h1 class="display-4">Gestione Ruoli e Utenti</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>a un certo punto qui comparira' una lista dei ruoli</p>
+
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <td style="text-align:left"> Id </td>
+            <td style="text-align:left"> Name </td>
+        </thead>
+            @foreach (var r in Model)
+            {
+            <tr>
+                <td style="text-align:left"> @r.Id</td>
+                <td style="text-align:left"> @r.Name </td>
+                <td i-role="@r.Id"></td>
+                <td>
+                    <form method="post" asp-action="deleteRole" asp-route-id="@r.Id">
+                        <button type="submit" class="btn btn-sm btn-danger">Elimina
+                        </button>
+                    </form>
+                </td>
+            </tr>            
+            }
+    </table>
+</div>
