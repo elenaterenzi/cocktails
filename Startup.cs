@@ -72,7 +72,6 @@ namespace cocktails
                     Configuration["EmailSender:Password"]
                     )
             );
-            //services.Configure<AuthMessageSenderOptions>(Configuration);
 
         }
 
