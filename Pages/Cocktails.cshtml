@@ -1,0 +1,54 @@
+﻿@page "{id?}"
+@using cocktails.Interfaces
+@inject ICocktailService CocktailService
+@inject IOrderService OrderService
+@model CocktailsModel
+@{
+    ViewData["Title"] = "Lista Cocktails";
+    bool alcool = true;
+    if (User.IsInRole("minorenne"))
+        alcool = false;
+    var clist = CocktailService.GetCocktails(alcool);
+    var olist = OrderService.GetOrdersByUser(User.Identity.Name);
+}
+
+<div class="text-left">
+    <h1 class="display-4">I tuoi Ordini e Lista dei Cocktails</h1>
+    <p>Qui trovi i tuoi ordini pendenti.</p>
+    <h2>I tuoi Ordini</h2>
+    @if(olist.Count == 0)
+    {
+        <p><b> Non ci sono ordini!</b></p>
+    }
+    else
+    {
+        <table class="table table-striped table-bordered w-auto">
+            <thead align="left">
+                <th> Cocktail </th>
+                <th> Ordinazione </th>
+            </thead>
+            @foreach (var o in olist)
+            {
+                <tr align="left">
+                    <td> @o.Cocktail </td>
+                    <td> @o.Dto </td>
+                </tr>            
+            }
+        </table>
+    }
+    <p>Sotto trovi la lista dei cocktails disponibili oggi. Cliccando su Ordina! puoi ordinarne uno</p>
+    <h2>I cocktails disponibili oggi</h2>
+    <table class="table table-striped table-bordered w-auto">
+        <thead align="left" >
+            <th> Cocktail </th>
+            <th> Ordinazione </th>
+        </thead>
+        @foreach (var c in clist)
+        {
+            <tr align="left">
+                <td> @c.Nome </td>
+                <td> <a class="btn btn-primary" asp-page="" asp-route-id="@c.Id">Ordina!</a></td>
+            </tr>            
+        }
+    </table>
+</div>
