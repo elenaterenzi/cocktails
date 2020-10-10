@@ -7,7 +7,9 @@
     ViewData["Title"] = "Lista Cocktails";
     bool alcool = true;
     if (User.IsInRole("minorenne"))
+    {
         alcool = false;
+    }
     var clist = CocktailService.GetCocktails(alcool);
     var olist = OrderService.GetOrdersByUser(User.Identity.Name);
 }
