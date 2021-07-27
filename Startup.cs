@@ -22,7 +22,6 @@ using cocktails.Interfaces;
 using cocktails.Services;
 using cocktails.Authorization;
 
-
 namespace cocktails
 {
     public class Startup
@@ -43,7 +42,7 @@ namespace cocktails
             // https://docs.microsoft.com/en-us/aspnet/core/security/authorization/roles?view=aspnetcore-3.1
             // https://stackoverflow.com/questions/42471866/how-to-create-roles-in-asp-net-core-and-assign-them-to-users
             // https://jasonwatmore.com/post/2019/10/16/aspnet-core-3-role-based-authorization-tutorial-with-example-api#role-cs
-            
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
