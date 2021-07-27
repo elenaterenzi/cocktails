@@ -3,7 +3,7 @@ Cocktails Asp.Net WebApp.
 
 This web app was coded in spare time. The sole purpose was having fun and learning C#.
 
-As the [license](./LICENSE) states, this code is provided and can be used at your own risk.
+As the [license](./LICENSE) states, the code is provided as-is and can be used at your own risk.
 
 The maintainers of this repository refuse any liability to how the code is used.
 
