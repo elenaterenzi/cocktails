@@ -28,11 +28,10 @@ namespace cocktails.TagHelpers
             IdentityRole role = await roleManager.FindByIdAsync(roleId);
             if (role != null)
             {
-                var userList = userManager.Users.ToList();
+                var userList = await userManager.GetUsersInRoleAsync(role.Name);
                 foreach (var user in userList)
                 {
-                    if (user != null && await userManager.IsInRoleAsync(user, role.Name))
-                        names.Add(user.UserName);
+                    names.Add(user.UserName);
                 }
             }
             output.Content.SetContent(names.Count == 0 ? "No Users" : string.Join(", ", names));
