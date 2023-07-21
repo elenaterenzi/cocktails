@@ -14,7 +14,9 @@ namespace cocktails.Data
         }
 
         public DbSet<cocktails.Models.Cocktail> cocktails {get; set;}
+        public DbSet<cocktails.Models.CocktailView> v_cocktails {get; set;}
         public DbSet<cocktails.Models.Order> ordini {get; set;}
+        public DbSet<cocktails.Models.Ingredient> ingredienti {get; set;}
 
         public DbSet<cocktails.Models.OrderView> v_ordini {get; set;}
     }

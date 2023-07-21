@@ -14,11 +14,11 @@ namespace cocktails.Services{
             _context = ctx;
         }
 
-        public List<Cocktail> GetCocktails(bool alcool = true){ 
+        public List<CocktailView> GetCocktails(bool alcool = true){ 
             if (alcool)
-                return _context.cocktails.ToList();
+                return _context.v_cocktails.ToList();
             else
-                return _context.cocktails.Where(x=> !x.Alcool).ToList();
+                return _context.v_cocktails.Where(x=> !x.Alcool).ToList();
         }
 
     }

@@ -1,0 +1,35 @@
+﻿@page "{id?}"
+@using cocktails.Interfaces
+@inject ApplicationDbContext _context
+@model IngredientModel
+@{
+    ViewData["Title"] = "Ingredienti";
+    var ilist = _context.ingredienti.ToList();
+}
+
+<div class="text-center">
+    <h1 class="display-4">Ingredienti</h1>
+
+    <table class="table table-striped table-bordered w-auto">
+        <thead>
+            <th style="text-align:left"> Cocktail </th>
+            <th style="text-align:left"> Disponibile </th>
+            <th style="text-align:left"> Cambia </th>
+        </thead>
+        @foreach (var o in ilist)
+        {
+            <tr>
+                <td style="text-align:left"> @o.Nome </td>
+                @if(o.Available) {
+                    <td style="text-align:left"> Si </td>
+                    } 
+                else { 
+                    <td style="text-align:left"> No </td>
+                }
+                <td style="text-align:left">
+                        <a class="btn btn-primary" asp-page="" asp-route-id="@o.Id">Cambia</a>
+                </td>
+           </tr>
+        }
+    </table>
+</div>
