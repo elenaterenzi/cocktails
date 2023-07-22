@@ -15,6 +15,14 @@
     var olist = OrderService.GetOrdersByUser(User.Identity.Name);
 }
 
+<style>
+    .ingredients {
+        font-size: .75em;
+        color: #2973ac;
+        font-style: oblique;
+        padding-top: 0px;
+    }  
+</style>
 <div class="text-left">
     <h1 class="display-4">I tuoi Ordini e Lista dei Cocktails</h1>
     <p>Qui trovi i tuoi ordini pendenti.</p>
@@ -49,7 +57,7 @@
         @foreach (var c in clist)
         {
             <tr align="left">
-                <td> @c.Nome </td>
+                <td> @c.Nome <br> <span class="ingredients"> @c.Ingredienti</span> </td>
                 <td> <a class="btn btn-primary" asp-page="" asp-route-id="@c.Id">Ordina!</a></td>
             </tr>            
         }
