@@ -114,6 +114,21 @@ namespace cocktails.Areas.Admin.Pages
 
             return RedirectToPage();
         }
+        public async Task<IActionResult> OnPostActivateUserAsync(string id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+            if (id != null)
+            {
+                var user = await _userManager.FindByIdAsync(id);
+                var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                var result = await _userManager.ConfirmEmailAsync(user,token);
+            }
+
+            return RedirectToPage();
+        }
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
